@@ -1,19 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <head>
+    <meta charset="utf-8">
+    <title>HTML5学习</title>
+    <style type="text/css">
+        .div1{
+            width:200px;
+            height:100px;
+            padding:20px;
+            border:1px solid #000;
+        }
+        p{
+            font-size: 28px;
+        }
+    </style>
 </head>
 <body>
-  <script>
+    <div>
+        <div id="div1" class="div1" ondrop="drop(event)" ondragover="allowDrop(event)" ></div>
+        <p id="drag1" draggable="true" ondragstart="drag(event)" ondrag="onDrag(event)">Hello World</p>
+    </div>
+    <script>
+        function drag(e){
+            e.dataTransfer.setData("Text", e.target.id);
+        }
+        function onDrag(e){
+            console.log(e)
+        }
 
-    var arr = [1, 2, [3]]
-    var arr1 = arr.slice()
-    arr1[2].push(4)
-    console.log(arr)
-    console.log(arr1)
-  </script>
+        function allowDrop(e){
+            e.preventDefault();
+        }
+        function drop(e){
+            e.preventDefault();
+            var data = e.dataTransfer.getData("Text");
+            e.target.appendChild(document.getElementById(data));
+        }
+    </script>
 </body>
 </html>
