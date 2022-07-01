@@ -1,41 +1,14 @@
-import React, { useContext } from 'react';
+// import React from 'react';
+import { ProfilePage } from './suspense'
 
-const themes = {
-  light: {
-    foreground: "#000000",
-    background: "#eeeeee"
-  },
-  dark: {
-    foreground: "red",
-    background: "yellow"
-  }
-};
+// function App() {
+//   const len = 3;
+//   return (
+//     <ul>
+//       {Array(len).fill(0).map((_, i) => <li key={i}>{i}</li>)}
+//     </ul>
+//   );
+// }
 
-const ThemeContext = React.createContext({});
 
-function App() {
-  return (
-    <ThemeContext.Provider value={themes.dark}>
-      <Toolbar />
-    </ThemeContext.Provider>
-  );
-}
-
-function Toolbar(props) {
-  return (
-    <div>
-      <ThemedButton />
-    </div>
-  );
-}
-
-function ThemedButton() {
-  const theme = useContext(ThemeContext);
-  return (
-    <button style={{ background: theme.background, color: theme.foreground }}>
-      I am styled by theme context!
-    </button>
-  );
-}
-
-export default App
+export default ProfilePage
